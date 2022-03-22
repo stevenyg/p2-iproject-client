@@ -24,7 +24,14 @@
               />
             </div>
           </form>
-          <TableCoin></TableCoin>
+          <TableCoinBasic
+            v-if="getPlanId === 1 || getPlanId === ''"
+          ></TableCoinBasic>
+
+          <TableCoinPro v-if="getPlanId === 2"></TableCoinPro>
+
+          <TableCoinExpert v-if="getPlanId === 3"></TableCoinExpert>
+
           <nav>
             <ul class="pagination d-flex justify-content-center">
               <li class="page-item">
@@ -60,11 +67,24 @@
 <script>
 import CoinNavbar from "../components/CoinNavbar.vue";
 import SubscribeCard from "../components/SubscribeCard.vue";
-import TableCoin from "../components/TableCoin.vue";
+import TableCoinBasic from "../components/TableCoinBasic.vue";
+import TableCoinPro from "../components/TableCoinPro.vue";
+import TableCoinExpert from "../components/TableCoinExpert.vue";
 
 export default {
   name: "HomePage",
-  components: { CoinNavbar, SubscribeCard, TableCoin },
+  computed: {
+    getPlanId() {
+      return this.$store.state.PlanId;
+    },
+  },
+  components: {
+    CoinNavbar,
+    SubscribeCard,
+    TableCoinBasic,
+    TableCoinPro,
+    TableCoinExpert,
+  },
 };
 </script>
 

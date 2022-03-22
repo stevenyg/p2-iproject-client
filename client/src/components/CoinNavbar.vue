@@ -42,6 +42,7 @@
               </li>
             </ul>
             <div class="tab-content" id="myTabContent">
+              <!-- ini form login -->
               <div
                 class="tab-pane fade show active"
                 id="login"
@@ -49,32 +50,33 @@
                 aria-labelledby="login-tab"
               >
                 <div class="mt-3">
-                  <form>
+                  <form @submit.prevent="loginHandler">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
+                      <label for="exampleInputEmail1">Email address1</label>
                       <input
+                        v-model="emailLogin"
                         type="email"
                         class="form-control"
-                        id="exampleInputEmail1"
                         aria-describedby="emailHelp"
                       />
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Password</label>
                       <input
+                        v-model="passwordLogin"
                         type="password"
                         class="form-control"
-                        id="exampleInputPassword1"
                       />
                     </div>
                     <div class="d-flex justify-content-center">
                       <button type="submit" class="btn btn-warning">
-                        Submit
+                        Login
                       </button>
                     </div>
                   </form>
                 </div>
               </div>
+              <!-- ini form register -->
               <div
                 class="tab-pane fade"
                 id="signup"
@@ -82,36 +84,27 @@
                 aria-labelledby="signup-tab"
               >
                 <div class="mt-3">
-                  <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Full name</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleInputFullName"
-                        aria-describedby="emailHelp"
-                      />
-                    </div>
+                  <form @submit.prevent="registerHandler">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email address</label>
                       <input
+                        v-model="emailRegister"
                         type="email"
                         class="form-control"
-                        id="exampleInputEmail1"
                         aria-describedby="emailHelp"
                       />
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Password</label>
                       <input
+                        v-model="passwordRegister"
                         type="password"
                         class="form-control"
-                        id="exampleInputPassword1"
                       />
                     </div>
                     <div class="d-flex justify-content-center">
                       <button type="submit" class="btn btn-warning">
-                        Submit
+                        Sign up
                       </button>
                     </div>
                   </form>
@@ -139,8 +132,11 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand text-warning font-weight-bold" href="#"
-            >Uppsala Coin</a
+          <router-link
+            to="/"
+            class="navbar-brand text-warning font-weight-bold"
+            href="#"
+            >Uppsala Coin</router-link
           >
         </nav>
       </div>
@@ -155,17 +151,14 @@
           >
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link text-warning font-weight-bold" href="#"
+                <router-link
+                  to="/profile"
+                  class="nav-link text-warning font-weight-bold"
+                  href="#"
                   >Profile
-                </a>
+                </router-link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link text-warning font-weight-bold" href="#"
-                  >Subscribe</a
-                >
-              </li>
-
-              <li class="nav-item">
+              <li v-if="loginStatus === false" class="nav-item">
                 <a
                   type="button"
                   class="nav-link text-warning font-weight-bold"
@@ -175,10 +168,12 @@
                 >
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link text-warning font-weight-bold" href="#"
-                  >Logout</a
-                >
+              <li
+                v-if="loginStatus === true"
+                @click.prevent="logoutHandler"
+                class="nav-item"
+              >
+                <a class="nav-link text-warning font-weight-bold">Logout</a>
               </li>
             </ul>
           </div>
@@ -191,6 +186,42 @@
 <script>
 export default {
   name: "CoinNavbar",
+  data() {
+    return {
+      emailLogin: "",
+      passwordLogin: "",
+      emailRegister: "",
+      passwordRegister: "",
+    };
+  },
+  computed: {
+    loginStatus() {
+      return this.$store.state.isLogin;
+    },
+  },
+  methods: {
+    loginHandler() {
+      const payload = {
+        email: this.emailLogin,
+        password: this.passwordLogin,
+      };
+
+      this.$store.dispatch("doLogin", payload);
+    },
+    registerHandler() {
+      const payload = {
+        email: this.emailRegister,
+        password: this.passwordRegister,
+      };
+
+      this.$store.dispatch("doRegister", payload);
+    },
+    logoutHandler() {
+      this.$store.commit("CHANGE_ISLOGINTOFALSE");
+      localStorage.clear();
+      this.$router.push({ path: "/" });
+    },
+  },
 };
 </script>
 
