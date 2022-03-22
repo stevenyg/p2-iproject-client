@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import TableRow from "../components/TableRow.vue";
+import TableRow from "./TableRow.vue";
 export default {
-  name: "TableCoin",
+  name: "TableCoinPro",
   components: { TableRow },
 };
 </script>

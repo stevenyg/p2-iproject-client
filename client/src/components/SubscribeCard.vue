@@ -42,7 +42,7 @@
             type="button"
             class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark"
           >
-            Subscribe
+            Get Started
           </button>
         </div>
       </div>
@@ -65,7 +65,7 @@
             type="button"
             class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark"
           >
-            Subscribe
+            Get Started
           </button>
         </div>
       </div>
