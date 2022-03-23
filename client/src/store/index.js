@@ -13,7 +13,9 @@ export default new Vuex.Store({
     basicTable: [],
     proTable: [],
     coinDetail: [],
-    coinChart: []
+    coinChart: [],
+    maxChart: 0,
+    minChart: 0
 
   },
   getters: {
@@ -46,7 +48,20 @@ export default new Vuex.Store({
     },
     INSERT_COINCHART(state, payload) {
       const dataChart = {}
+      let min = Infinity
+      let max = 0
       for (let i = 0; i < payload.prices.length; i++) {
+        if (payload.prices[i][1] < min) {
+          min = payload.prices[i][1]
+        }
+
+        if (payload.prices[i][1] > max) {
+          max = payload.prices[i][1]
+        }
+
+        state.maxChart = max
+        state.minChart = min
+
         const date = new Date(payload.prices[i][0])
         const dateFormat = date.getDate() +
           "/" + (date.getMonth() + 1) +
@@ -55,6 +70,7 @@ export default new Vuex.Store({
           ":" + date.getMinutes()
         dataChart[dateFormat] = payload.prices[i][1]
       }
+
       state.coinChart = dataChart
     }
   },

@@ -39,7 +39,9 @@
           class="mt-5"
           :data="getChart"
           width="1000px"
-          height="400px"
+          height="500px"
+          :min="getMinChart"
+          :max="getMaxChart"
         ></line-chart>
       </div>
     </div>
@@ -67,6 +69,12 @@ export default {
     },
     getChart() {
       return this.$store.state.coinChart;
+    },
+    getMaxChart() {
+      return this.$store.state.maxChart;
+    },
+    getMinChart() {
+      return this.$store.state.minChart;
     },
   },
 };
