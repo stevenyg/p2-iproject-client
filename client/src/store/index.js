@@ -11,11 +11,11 @@ export default new Vuex.Store({
     PlanId: "",
     isCardSaved: false,
     basicTable: [],
-    proTable: [],
     coinDetail: [],
     coinChart: [],
     maxChart: 0,
-    minChart: 0
+    minChart: 0,
+    creditCard: {}
 
   },
   getters: {
@@ -26,7 +26,9 @@ export default new Vuex.Store({
       state.email = payload.email
       state.PlanId = payload.PlanId
       state.isCardSaved = payload.isCardSaved
+      state.creditCard = payload.card
     },
+
     CHANGE_ISLOGINTOFALSE(state) {
       state.isLogin = false,
         state.email = "",
@@ -42,8 +44,6 @@ export default new Vuex.Store({
       state.basicTable = payload
     },
     INSERT_COINDETAIL(state, payload) {
-
-
       state.coinDetail = payload
     },
     INSERT_COINCHART(state, payload) {
@@ -58,7 +58,6 @@ export default new Vuex.Store({
         if (payload.prices[i][1] > max) {
           max = payload.prices[i][1]
         }
-
         state.maxChart = max
         state.minChart = min
 
@@ -66,8 +65,7 @@ export default new Vuex.Store({
         const dateFormat = date.getDate() +
           "/" + (date.getMonth() + 1) +
           "/" + date.getFullYear() +
-          " " + date.getHours() +
-          ":" + date.getMinutes()
+          " " + date.getHours() + ":00"
         dataChart[dateFormat] = payload.prices[i][1]
       }
 
@@ -77,10 +75,10 @@ export default new Vuex.Store({
   actions: {
     async doLogin(context, payload) {
       try {
-        const response = await axios.post("http://localhost:3000/user/login", payload, {})
+        const response = await axios.post("https://uppsalafox21-coin.herokuapp.com/user/login", payload, {})
         localStorage.access_token = response.data.access_token
         context.commit("CHANGE_ISLOGIN", response.data)
-        console.log(response.data);
+
       } catch (error) {
         console.log(error);
       }
@@ -88,7 +86,7 @@ export default new Vuex.Store({
     },
     async doRegister(context, payload) {
       try {
-        await axios.post("http://localhost:3000/user/register", payload, {})
+        await axios.post("https://uppsalafox21-coin.herokuapp.com/user/register", payload, {})
       } catch (error) {
         console.log(error);
       }
@@ -97,7 +95,7 @@ export default new Vuex.Store({
     async sendTokenToServer(context, payload) {
       try {
 
-        await axios.post("http://localhost:3000/user/card", payload, {
+        await axios.post("https://uppsalafox21-coin.herokuapp.com/user/card", payload, {
           headers: { access_token: localStorage.access_token }
         })
         context.commit("CHANGE_ISSAVEDCARDTOTRUE")
@@ -113,7 +111,7 @@ export default new Vuex.Store({
           PlanId: payload.PlanId
         }
 
-        await axios.patch("http://localhost:3000/user/update", data, {
+        await axios.patch("https://uppsalafox21-coin.herokuapp.com/user/update", data, {
           headers: { access_token: localStorage.access_token }
         })
         context.commit("CHANGE_PLAN", payload)
@@ -145,7 +143,7 @@ export default new Vuex.Store({
       try {
         const response1 = await axios.get(`https://api.coingecko.com/api/v3/coins/${payload.id}`)
         context.commit("INSERT_COINDETAIL", response1.data)
-        const response2 = await axios.get(`https://api.coingecko.com/api/v3/coins/${payload.id}/market_chart?vs_currency=INR&days=30&interval=hourly`)
+        const response2 = await axios.get(`https://api.coingecko.com/api/v3/coins/${payload.id}/market_chart?vs_currency=INR&days=1&interval=hourly`)
         context.commit("INSERT_COINCHART", response2.data)
       } catch (error) {
         console.log(error);
