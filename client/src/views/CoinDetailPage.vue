@@ -3,29 +3,44 @@
     <CoinNavbar></CoinNavbar>
 
     <div class="row mt-5" style="width: 1440px; height: 700px">
-      <div class="col-md-3 px-3" style="border-right: 2px solid grey">
+      <div
+        class="col-md-3 px-3 d-flex justify-content-center"
+        style="border-right: 2px solid grey"
+      >
         <div class="text-light">
           <img
-            src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
+            :src="getDetail.image.large"
             alt="Bitcoin"
             height="200"
             style="margin-bottom: 20px"
           />
 
-          <h3>Bitcoin</h3>
-          <h6>
-            Bitcoin is the first successful internet money based on peer-to-peer
-            technology; whereby no central bank or authority is involved in the
-            transaction and production of the Bitcoin currency.
-          </h6>
-          <h5>Rank:</h5>
-          <h5>Current Price:</h5>
-          <h5>Market Cap:</h5>
+          <h3>{{ getDetail.name }}</h3>
+
+          <h5>Rank: {{ getDetail.market_cap_rank }}</h5>
+
+          <h5>
+            Market Cap: IDR
+            {{
+              new Intl.NumberFormat("id-ID", {
+                currency: "IDR",
+              }).format(
+                Math.floor(getDetail.market_data.market_cap.idr / 1000000000000)
+              )
+            }}
+            B
+          </h5>
         </div>
       </div>
 
       <div class="col-md-9">
-        <div class="bg-warning">test</div>
+        <h1 class="text-center text-warning">Monthly Time Frame</h1>
+        <line-chart
+          class="mt-5"
+          :data="getChart"
+          width="1000px"
+          height="400px"
+        ></line-chart>
       </div>
     </div>
   </div>
@@ -36,7 +51,24 @@ import CoinNavbar from "../components/CoinNavbar.vue";
 
 export default {
   name: "CoinDetailPage",
+  data() {
+    return {
+      chartData: {
+        "2017-05-13": 2,
+        "2017-05-14": 5,
+        "2017-05-15": 4,
+      },
+    };
+  },
   components: { CoinNavbar },
+  computed: {
+    getDetail() {
+      return this.$store.state.coinDetail;
+    },
+    getChart() {
+      return this.$store.state.coinChart;
+    },
+  },
 };
 </script>
 

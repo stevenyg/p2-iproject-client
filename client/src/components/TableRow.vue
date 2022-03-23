@@ -36,9 +36,13 @@
       B
     </td>
     <td>
-      <router-link class="btn btn-dark text-warning"
-        >Show Historycal Chart</router-link
+      <router-link
+        :to="`/coin/${coin.id}`"
+        @click.native="detailHandler(coin.id)"
+        class="btn btn-dark text-warning"
       >
+        Show Historycal Chart
+      </router-link>
     </td>
   </tr>
 </template>
@@ -47,6 +51,14 @@
 export default {
   name: "TableRow",
   props: ["coin"],
+  methods: {
+    detailHandler(id) {
+      const payload = {
+        id: id,
+      };
+      this.$store.dispatch("getDetailCoin", payload);
+    },
+  },
 };
 </script>
 
