@@ -13,7 +13,9 @@
       </tr>
     </thead>
     <tbody>
-      <TableRow></TableRow>
+          <tbody v-for="coin in getTablePro" v-bind:key="coin.id">
+      <TableRow :coin="coin"> </TableRow>
+    </tbody>
     </tbody>
   </table>
 </template>
@@ -23,6 +25,15 @@ import TableRow from "./TableRow.vue";
 export default {
   name: "TableCoinPro",
   components: { TableRow },
+  //   computed: {
+  //     getTablePro() {
+  //       console.log(this.$store.state.proTable, 1);
+  //       return this.$store.state.proTable;
+  //     },
+  //   },
+  //   created() {
+  //     this.$store.dispatch("getProTable");
+  //   },
 };
 </script>
 
