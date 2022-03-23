@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
           <h1 class="card-title pricing-card-title">
-            $ 0 <small class="text-muted">/ Monthly</small>
+            Totally Free <small class="text-muted">/ Monthly</small>
           </h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li>Top 10 Coin</li>
@@ -16,18 +16,8 @@
             <li>Help center access</li>
           </ul>
           <button
-            v-if="isCardSaved === true && userPlanType !== 1"
-            @click.prevent="checkoutHandler(1)"
             type="button"
             class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark"
-          >
-            Get Started
-          </button>
-          <button
-            v-if="isCardSaved === false || userPlanType === 1"
-            type="button"
-            class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark"
-            disabled
           >
             Get Started
           </button>
@@ -40,7 +30,7 @@
         </div>
         <div class="card-body">
           <h1 class="card-title pricing-card-title">
-            $5 <small class="text-muted">/ Monthly</small>
+            IDR 50.000 <small class="text-muted">/ Monthly</small>
           </h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li>Top 100 Coin</li>
@@ -49,18 +39,8 @@
             <li>Help center access</li>
           </ul>
           <button
-            v-if="isCardSaved === true && userPlanType !== 2"
-            @click.prevent="checkoutHandler(2)"
             type="button"
             class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark"
-          >
-            Get Started
-          </button>
-          <button
-            v-if="isCardSaved === false || userPlanType === 2"
-            type="button"
-            class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark"
-            disabled
           >
             Get Started
           </button>
@@ -73,7 +53,7 @@
         </div>
         <div class="card-body">
           <h1 class="card-title pricing-card-title">
-            $10 <small class="text-muted">/ Monthly</small>
+            IDR 100.000 <small class="text-muted">/ Monthly</small>
           </h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li>All Coin listed</li>
@@ -82,18 +62,8 @@
             <li>Help center access</li>
           </ul>
           <button
-            v-if="isCardSaved === true && userPlanType !== 3"
-            @click.prevent="checkoutHandler(3)"
             type="button"
             class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark"
-          >
-            Get Started
-          </button>
-          <button
-            v-if="isCardSaved === false || userPlanType === 3"
-            type="button"
-            class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark"
-            disabled
           >
             Get Started
           </button>
@@ -106,22 +76,6 @@
 <script>
 export default {
   name: "SubscribePlan",
-  computed: {
-    isCardSaved() {
-      return this.$store.state.isCardSaved;
-    },
-    userPlanType() {
-      return this.$store.state.PlanId;
-    },
-  },
-  methods: {
-    checkoutHandler(input) {
-      const payload = {
-        PlanId: input,
-      };
-      this.$store.dispatch("changePlan", payload);
-    },
-  },
 };
 </script>
 
