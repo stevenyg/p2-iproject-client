@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body style="background-color:#14161a;">
+  
+
+
+    <div class="container-fluid">
+        <div class="row" style="box-shadow: 0px 5px 10px #000000;">
+            <div class="col-md-6">
+                <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#14161a;">
+                     
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> <a class="navbar-brand text-warning font-weight-bold" href="#">Uppsala Coin</a>
+                   
+                </nav>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+                <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#14161a;">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                             <a class="nav-link text-warning font-weight-bold" href="#">Profile </a>
+                        </li>
+                        <li class="nav-item">
+                             <a class="nav-link text-warning font-weight-bold" href="#">Subscribe</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning font-weight-bold" href="#">Sign Up</a>
+                       </li>
+                        <li  class="nav-item">
+                            <a type="button" class="nav-link text-warning font-weight-bold" data-toggle="modal" data-target="#myModal" >Login</a>
+                       </li>
+                     
+                       <li class="nav-item">
+                        <a class="nav-link text-warning font-weight-bold" href="#">Logout</a>
+                   </li>
+                    </ul>
+                </div>
+            </nav>
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="col-md-12 mt-3 px-0">
+                <img class="w-100" style="height:450px;"src="https://images.unsplash.com/photo-1622630998477-20aa696ecb05?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2746&q=80">
+            </div>
+                <div class="col-md-12 mt-3"> 
+                    <div style="margin:auto; max-width:1200px;">
+                    <h1 class="text-warning d-flex justify-content-center">Cryptocurrency Prices</h1>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="search" placeholder="Search Crypto"class="form-control" id="exampleInputEmail1">
+                    </div>
+                </form>
+              
+                <table class="table rounded bg-light" style="margin-left:auto;margin-right:auto;"  >
+                    <thead class="bg-warning ">
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Coin
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                24h Change
+                            </th>
+                            <th>
+                               Market Cap
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                BTC
+                            </td>
+                            <td>
+                                $100000000
+                            </td>
+                            <td>
+                                + 1%
+                            </td>
+                            <td>
+                                $1000000000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                BTC
+                            </td>
+                            <td>
+                                $100000000
+                            </td>
+                            <td>
+                                + 1%
+                            </td>
+                            <td>
+                                $1000000000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                ETH
+                            </td>
+                            <td>
+                                $100000000
+                            </td>
+                            <td>
+                                + 1%
+                            </td>
+                            <td>
+                                $1000000000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                SOL
+                            </td>
+                            <td>
+                                $100000000
+                            </td>
+                            <td>
+                                + 1%
+                            </td>
+                            <td>
+                                $1000000000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                BTC
+                            </td>
+                            <td>
+                                $100000000
+                            </td>
+                            <td>
+                                + 1%
+                            </td>
+                            <td>
+                                $1000000000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                BTC
+                            </td>
+                            <td>
+                                $100000000
+                            </td>
+                            <td>
+                                + 1%
+                            </td>
+                            <td>
+                                $1000000000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                BTC
+                            </td>
+                            <td>
+                                $100000000
+                            </td>
+                            <td>
+                                + 1%
+                            </td>
+                            <td>
+                                $1000000000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                BTC
+                            </td>
+                            <td>
+                                $100000000
+                            </td>
+                            <td>
+                                + 1%
+                            </td>
+                            <td>
+                                $1000000000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                BTC
+                            </td>
+                            <td>
+                                $100000000
+                            </td>
+                            <td>
+                                + 1%
+                            </td>
+                            <td>
+                                $1000000000
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                BTC
+                            </td>
+                            <td>
+                                $100000000
+                            </td>
+                            <td>
+                                + 1%
+                            </td>
+                            <td>
+                                $1000000000
+                            </td>
+                        </tr> 
+                    </tbody>
+                </table>
+          
+                <nav>
+                    <ul class="pagination d-flex justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link text-dark" href="#">Previous</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link text-dark" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link text-dark" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link text-dark" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link text-dark" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link text-dark" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link text-dark" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+           
+                <div class="container">
+                    <div class="card-deck mb-3 text-center">
+                      <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-warning">
+                          <h4 class="my-0 font-weight-normal">Free</h4>
+                        </div>
+                        <div class="card-body">
+                          <h1 class="card-title pricing-card-title">$ 0 <small class="text-muted">/ Monthly</small></h1>
+                          <ul class="list-unstyled mt-3 mb-4">
+                            <li>Top 10 Coin</li>
+                            
+                            <li>Email support</li>
+                            <li>Help center access</li>
+                          </ul>
+                          <button type="button" class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark">Get Started</button>
+                        </div>
+                      </div>
+                      <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-warning">
+                          <h4 class="my-0 font-weight-normal">Pro</h4>
+                        </div>
+                        <div class="card-body">
+                          <h1 class="card-title pricing-card-title">$5 <small class="text-muted">/ Monthly</small></h1>
+                          <ul class="list-unstyled mt-3 mb-4">
+                            <li>Top 100 Coin</li>
+                            
+                            <li>Priority email support</li>
+                            <li>Help center access</li>
+                          </ul>
+                          <button type="button" class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark">Subscribe</button>
+                        </div>
+                      </div>
+                      <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-warning">
+                          <h4 class="my-0 font-weight-normal">Enterprise</h4>
+                        </div>
+                        <div class="card-body">
+                          <h1 class="card-title pricing-card-title">$10 <small class="text-muted">/ Monthly</small></h1>
+                          <ul class="list-unstyled mt-3 mb-4">
+                            <li>All Coin listed</li>
+                           
+                            <li>Phone and email support</li>
+                            <li>Help center access</li>
+                          </ul>
+                          <button type="button" class="btn btn-lg btn-block btn-outline-dark bg-warning text-dark">Subscribe</button>
+                        </div>
+                      </div>
+                    </div>
+                
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</body>
+</html>
