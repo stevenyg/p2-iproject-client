@@ -148,6 +148,17 @@ export default new Vuex.Store({
       } catch (error) {
         console.log(error);
       }
+    },
+
+    async getLoggedInUser(context) {
+      try {
+        const response1 = await axios.get("https://uppsalafox21-coin.herokuapp.com/user/data", {
+          headers: { access_token: localStorage.access_token }
+        })
+        context.commit("CHANGE_ISLOGIN", response1.data)
+      } catch (error) {
+        console.log(error);
+      }
     }
     // async getPaginationPrev(context, payload) {
     //   try {

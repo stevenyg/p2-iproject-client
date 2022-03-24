@@ -8,6 +8,12 @@
 export default {
   name: "App",
   created() {
+    const token = localStorage.access_token;
+
+    if (token) {
+      this.$store.dispatch("getLoggedInUser");
+    }
+
     this.$store.dispatch("getBasicTable");
   },
 };
